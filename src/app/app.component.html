@@ -1,0 +1,136 @@
+
+  <div class="Maindiv" >
+    <mat-toolbar color="accent" >
+      <span>Sub_ink.Smudge</span>
+      
+    </mat-toolbar>
+    <br>
+  </div>
+
+<div class="maincard">
+
+ 
+
+  <div class="card">
+     <form [formGroup]="LoginForm" (ngSubmit)="onclick()">
+
+    <div class="card" id="name">
+      <mat-form-field class="card" matRipple color="accent">
+        <mat-label >Name</mat-label>
+        <input  (keypress)="ch($event)" formControlName="Name" required  matInput>
+        <mat-error *ngIf="Name?.invalid &&Name?.touched ">Username required </mat-error> 
+        <mat-error *ngIf="Name?.errors?.['maxlength']">Maximum length for Name is 20</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="card">
+      <mat-form-field matRipple class="card"  color="accent">
+        <mat-label>Address</mat-label>
+        <textarea formControlName="Address" required matInput></textarea>
+        <mat-error *ngIf="Address?.invalid &&Address?.touched ">Addresss required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="card">
+      <mat-form-field matRipple class="card" color="accent" appearance="fill">
+        <mat-label>State</mat-label>
+        <mat-select required formControlName="State">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+          
+        </mat-select>
+        <mat-error *ngIf="State?.invalid &&State?.touched && State?.errors?.['prestine']">State required</mat-error>
+      </mat-form-field>
+    </div>
+    
+  
+    <div class="card">
+      <mat-form-field  class="card" color="accent" appearance="fill">
+        <mat-label>Pincode</mat-label>
+        <input required formControlName="PinCode" matInput mask="000-000"  >
+        <mat-error *ngIf="PinCode?.invalid &&PinCode?.touched ">PinCode required
+          <mat-error *ngIf="PinCode?.errors?.['maxlength']">PinCode Limit Exceeded</mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    
+    <div class="card">
+      <mat-form-field class="card"  matRipple color="accent">
+        <mat-label>Mobile Number</mat-label>
+        <input (keypress)="num($event)" required formControlName="Mobile" required matInput maxlength="10">
+        <mat-error *ngIf="Mobile?.invalid &&Mobile?.touched ">Mobile Number required</mat-error>
+        <mat-error *ngIf="Mobile?.errors?.['maxlength']">Mobile number exceeded limit of 10 digits</mat-error>
+        <mat-error *ngIf="Mobile?.errors?.['minlength']">Mobile number must be 10 digits</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="card">
+      <mat-form-field class="card" color="accent"  class="card">
+        <mat-label>Email</mat-label>
+        <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required type="email" formControlName="Email" matInput placeholder="Ex. subi@example.com">
+        <mat-error *ngIf="Email?.invalid &&Email?.touched ">Email required
+          <mat-error *ngIf="Email?.errors?.['email']">Enter a valid Email id</mat-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    
+    
+    <div class="card">
+      <mat-form-field class="card" color="accent" appearance="fill" >
+        <mat-label>Choose a date</mat-label>
+        <input [max]="maxDate" required formControlName="Dob" matInput [matDatepicker]="datepicker">
+        <mat-hint >mm/dd/yyyy</mat-hint>
+        <mat-datepicker-toggle  matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+        <mat-error *ngIf="Dob?.invalid &&Dob?.touched ">Dob required</mat-error>
+      </mat-form-field>
+    </div>
+  
+    <div class="card">
+      <label class="card"><b>Sex</b></label>
+      <mat-radio-group  class="card" color="accent" required formControlName="Sex" aria-label="Sex">
+        <mat-radio-button class="rad" value="Male" color="accent">Male</mat-radio-button>
+        <mat-radio-button  class="rad" value="Female">Female</mat-radio-button>
+        <mat-radio-button class="rad" value="Other">Other</mat-radio-button>
+        <mat-error *ngIf="Sex?.invalid &&Sex?.touched ">sex required</mat-error>
+      </mat-radio-group>
+    </div>
+
+   <div class="sellist">
+    <mat-label><b>Interests</b></mat-label>
+    <mat-selection-list formControlName="Interest">
+      <mat-list-option  *ngFor="let Inte of Inter" [value]="Inte">
+        {{Inte}}
+      </mat-list-option>
+    </mat-selection-list>
+   </div>
+      
+    <span  class="butcard">
+      <button   class="but " type="reset"  mat-raised-button color="warn" matRipple (click)="cancel()" mat-dialog-close>Cancel</button>
+    </span>  
+    
+    <span class="butcard">  
+      <button class="but" type="submit"  mat-raised-button color="accent" matRipple (click)="Success()">Submit</button>
+    </span>
+
+    <span class="butcard">
+  
+    </span>
+    
+    
+  </form>
+  
+    </div>
+
+
+
+
+
+ 
+    
+
+
+
+

@@ -1,0 +1,98 @@
+<div>
+  <mat-toolbar color="accent">
+    Sub-ink.Smudge
+  </mat-toolbar>
+</div>
+<div class="tcard" >
+
+  <div class="imge">
+    
+      
+      
+    <!-- <a href=""></a> -->
+    </div>
+   
+    
+    
+  
+  <div class="tab" [hidden]="DatArr.length<=0">
+    <table  mat-table  [dataSource]="DatArr" #table class="mat-elevation-z8" color="accent">
+    
+  
+      <ng-container matColumnDef="Address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let x" > {{x.Address}} </td>
+      </ng-container>
+  
+      
+  
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef> Name</th>
+        <td mat-cell *matCellDef="let x"> {{x.Name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="State">
+        <th mat-header-cell *matHeaderCellDef>State</th>
+        <td mat-cell *matCellDef="let x"> {{x.State}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Pincode">
+        <th mat-header-cell *matHeaderCellDef>PinCode</th>
+        <td mat-cell *matCellDef="let x"> {{x.PinCode}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Mobile">
+        <th mat-header-cell *matHeaderCellDef>Mobile</th>
+        <td mat-cell *matCellDef="let x"> {{x.Mobile}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let x"> {{x.Email}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Dob">
+        <th mat-header-cell *matHeaderCellDef>Dob</th>
+        <td mat-cell  *matCellDef="let x"> {{x.Dob|date:'longDate'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="Sex">
+        <th mat-header-cell *matHeaderCellDef >Sex</th>
+        <td mat-cell *matCellDef="let x"> {{x.Sex}} </td>
+      </ng-container>
+     
+      <ng-container matColumnDef="Interest">
+  
+        <th mat-header-cell *matHeaderCellDef >Interest</th>
+        <td mat-cell *matCellDef="let x"> {{x.Interest}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Button">
+  
+        <th mat-header-cell *matHeaderCellDef >Actions</th>
+        <td mat-cell *matCellDef="let x"> 
+          
+          <button (click)="Edit(x)" mat-icon-button aria-label="Edit">
+            <mat-icon>edit</mat-icon>
+          </button>
+            <button (click)="Delete(x)" mat-icon-button aria-label="Delete">
+              <mat-icon>delete</mat-icon></button>
+          <!-- <span class="tabut">
+            <button [hidden]="flag==false"  mat-raised-button color="primary" (click)="Edit()">Edit</button>
+          </span >
+          <span class="tabut">
+            <button [hidden]="del==false" mat-raised-button color="warn" matRipple (click)="Delete()" >Delete</button>
+          </span> -->
+          
+       
+          
+        </td>
+      </ng-container>
+        
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row 
+      *matRowDef="let row; columns: displayedColumns;"  ></tr>
+  
+      
+    </table>
+  </div>
+
+  
+  <div class="tabbut">
+    <button mat-raised-button color="accent" (click)="Add()">Add Data</button>
+  </div>
+</div>
